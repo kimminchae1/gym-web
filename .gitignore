@@ -1,1 +1,20 @@
+# macOS
+.DS_Store
+
+# build outputs
+target/
+**/target/
+
+# Eclipse / IDE
+.classpath
+.project
+.settings/
+
+# firebase keys
+keys/
+**/*firebase-adminsdk*.json
+**/*firebase*.json
+
 /.metadata/
+
+
