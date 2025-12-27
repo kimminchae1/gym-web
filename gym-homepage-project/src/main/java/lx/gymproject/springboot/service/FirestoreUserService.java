@@ -9,15 +9,16 @@ import com.google.cloud.firestore.QuerySnapshot;
 import lombok.RequiredArgsConstructor;
 import lx.gymproject.springboot.vo.GymUserVO;
 
-@Service
+//@Service
 @RequiredArgsConstructor
 public class FirestoreUserService {
 
     private final Firestore firestore;
 
-    public FirestoreUserService(Firestore firestore) {
-        this.firestore = firestore;
-    }
+//    public FirestoreUserService(Firestore firestore) {
+//        this.firestore = firestore;
+//    }
+    
     public GymUserVO findByEmail(String email) throws Exception {
         QuerySnapshot snapshot = firestore
                 .collection("users")

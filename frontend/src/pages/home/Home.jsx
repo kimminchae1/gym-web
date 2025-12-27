@@ -1,6 +1,6 @@
 import React from "react";
 import "./Home.css";
-import Button from "../../components/Button";
+import Button from "../../components/Button/Button";
 
 const Home = () => {
   return (
@@ -65,7 +65,10 @@ const Home = () => {
                 data-bs-ride="carousel"
               >
                 <div className="carousel-inner">
-                  <div className="carousel-item active" data-bs-interval="10000">
+                  <div
+                    className="carousel-item active"
+                    data-bs-interval="10000"
+                  >
                     <img
                       src="https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20250102_33%2F17358099935767D47h_JPEG%2FKakaoTalk_20250102_182537061_01.jpg"
                       className="d-block w-100"
