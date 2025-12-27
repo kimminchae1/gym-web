@@ -19,8 +19,15 @@
 	<div class="container">
 		<div class="login-section">
 			<h1 class="fw-bold fs-3">로그인</h1>
+			<div id="fsStatus" class="alert alert-secondary" role="alert">
+			  🔄 Firestore 연결 확인 중...
+			</div>
+			
 			<!-- 로그인 폼 -->
-			<form action="login.do" method="post">
+			<!--  <form action="login.do" method="post">-->
+			<form action="/login_firestore.do" method="post">
+			
+			
 				<label id="label-id">아이디 : <input type="email" name="userEmail" id="userName" placeholder="example@example.com"></label>
 				<label>비밀번호 : <input type="password" name="userPassword" placeholder="password"></label>
 				<button type="submit" class="btn btn-secondary" id="loginbtn">로그인</button>
@@ -36,6 +43,26 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 <script>
+
+  fetch('/api/firestore/health')
+    .then(res => res.json())
+    .then(data => {
+      const el = document.getElementById('fsStatus');
+      if (data.ok) {
+        el.className = 'alert alert-success';
+        el.textContent = '✅ ' + data.message;
+      } else {
+        el.className = 'alert alert-danger';
+        el.textContent = '❌ ' + data.message;
+      }
+    })
+    .catch(err => {
+      const el = document.getElementById('fsStatus');
+      el.className = 'alert alert-danger';
+      el.textContent = '❌ Firestore 체크 요청 실패: ' + err;
+    });
+
+
 	const params = new URLSearchParams(window.location.search);
 	if(params.get('block') === 'true') {
 		alert('로그인 후 이용해주세요');
