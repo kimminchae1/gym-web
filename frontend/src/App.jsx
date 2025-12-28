@@ -1,4 +1,3 @@
-import "./App.css";
 import { Routes, Route } from "react-router-dom";
 
 import Join from "./pages/auth/Join";
@@ -17,9 +16,13 @@ import AppointmentHome from "./pages/reservation/AppointmentHome";
 import Dashboard from "./pages/reservation/Dashboard";
 import Reservation from "./pages/reservation/Reservation";
 
+import Header from "./components/Header/Header";
+import Footer from "./components/Footer/Footer";
+
 function App() {
   return (
     <>
+      <Header />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/join" element={<Join />} />
@@ -37,6 +40,7 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/reservation" element={<Reservation />} />
       </Routes>
+      <Footer />
     </>
   );
 }
