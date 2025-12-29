@@ -13,7 +13,7 @@ import lombok.RequiredArgsConstructor;
 import lx.gymproject.springboot.service.FirestoreUserService;
 import lx.gymproject.springboot.vo.GymUserVO;
 
-//@Controller
+@Controller
 public class FirestoreUserController {
 
     private final FirestoreUserService userService;

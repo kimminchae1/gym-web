@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.google.cloud.firestore.Firestore;
 
-//@RestController
+@RestController
 public class FirestoreHealthController {
 
     private final Firestore firestore;
