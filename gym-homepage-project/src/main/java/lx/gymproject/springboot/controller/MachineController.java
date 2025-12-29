@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -34,61 +35,112 @@ public class MachineController {
 //		model.addAttribute("data", list);
 //		return "machine/explainMachine";
 //	}
+	
 
-	@PostMapping("/updateMachine.do")
-
+	@PostMapping("/api/machines/update")
 	public String updateMachine(GymMachineVO vo) throws Exception {
-
 		GymMachineVO existingFile = dao.getMachine(vo.machineId);
-
 		try {
 			String fileName = FileUploadUtil.saveFile(vo.getFile(), existingFile.getMachineImg());
 			vo.setMachineImg(fileName);
 		} catch (IOException e) {
 			e.printStackTrace();
+			return "File upload failed";
 		}
-
 		dao.updateMachine(vo);
-		return "redirect:explainMachine.do";
+		return "Machine updated successfully";
 	}
 
-	@GetMapping("/machine_edit_form.do")
-	public String edit(@RequestParam("machineId") int machineId, Model model) throws Exception {
-		GymMachineVO vo = dao.getMachine(machineId);
-		model.addAttribute("vo", vo);
-		return "machine/machine_edit_form";
-	}
+//	@PostMapping("/updateMachine.do")
+//
+//	public String updateMachine(GymMachineVO vo) throws Exception {
+//
+//		GymMachineVO existingFile = dao.getMachine(vo.machineId);
+//
+//		try {
+//			String fileName = FileUploadUtil.saveFile(vo.getFile(), existingFile.getMachineImg());
+//			vo.setMachineImg(fileName);
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+//
+//		dao.updateMachine(vo);
+//		return "redirect:explainMachine.do";
+//	}
 
-	@PostMapping("/insertMachine.do")
+	
+	@GetMapping("/api/machine_edit_form")
+	public GymMachineVO edit(@RequestParam("machineId") int machineId) throws Exception {
+		return dao.getMachine(machineId);
+	}
+	
+//	@GetMapping("/machine_edit_form.do")
+//	public String edit(@RequestParam("machineId") int machineId, Model model) throws Exception {
+//		GymMachineVO vo = dao.getMachine(machineId);
+//		model.addAttribute("vo", vo);
+//		return "machine/machine_edit_form";
+//	}
+
+	
+	@PostMapping("/api/machines/insert")
 	public String insertMachine(GymMachineVO vo) throws Exception {
-
 		try {
 			String fileName = FileUploadUtil.saveFile(vo.getFile(), null);
 			vo.setMachineImg(fileName);
 		} catch (IOException e) {
 			e.printStackTrace();
+			return "File upload failed";
 		}
-
 		dao.insertMachine(vo);
-		return "redirect:explainMachine.do";
+		return "Machine added successfully";
 	}
+//	@PostMapping("/insertMachine.do")
+//	public String insertMachine(GymMachineVO vo) throws Exception {
+//
+//		try {
+//			String fileName = FileUploadUtil.saveFile(vo.getFile(), null);
+//			vo.setMachineImg(fileName);
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+//
+//		dao.insertMachine(vo);
+//		return "redirect:explainMachine.do";
+//	}
 
-	@PostMapping("/deleteMachine.do")
-	public String deleteMachine(@RequestParam(value = "machineId") int machineId) throws Exception {
-		System.out.println("deleteMachine 실행됨" + machineId);
+	@DeleteMapping("/api/machines/delete")
+	public String deleteMachine(@RequestParam("machineId") int machineId) throws Exception {
+		System.out.println("deleteMachine 실행됨 " + machineId);
 		dao.deleteMachine(machineId);
-		return "redirect:explainMachine.do";
+		return "Machine deleted successfully";
 	}
+	
+//	@PostMapping("/deleteMachine.do")
+//	public String deleteMachine(@RequestParam(value = "machineId") int machineId) throws Exception {
+//		System.out.println("deleteMachine 실행됨" + machineId);
+//		dao.deleteMachine(machineId);
+//		return "redirect:explainMachine.do";
+//	}
 
-	// 추가화면으로(marchine_form)
-	@GetMapping("/machine_form.do")
-	public String goToMarchineForm() {
-		return "machine/machine_form";
+	
+	@GetMapping("/api/machine_form")
+	public String goToMachineForm() {
+		return "Machine form loaded";
 	}
+	
+//	// 추가화면으로(marchine_form)
+//	@GetMapping("/machine_form.do")
+//	public String goToMarchineForm() {
+//		return "machine/machine_form";
+//	}
 
-	@GetMapping("/cancle.do")
-	public String goToExpainMachine() {
-		return "redirect:explainMachine.do";
+	@PostMapping("/api/cancel")
+	public String cancel() {
+		return "Cancelled";
 	}
+//	@GetMapping("/cancle.do")
+//	public String goToExpainMachine() {
+//		return "redirect:explainMachine.do";
+//	}
 
 }
