@@ -31,3 +31,16 @@ build/
 
 ### VS Code ###
 .vscode/
+
+# build output
+/target/
+
+# macOS
+.DS_Store
+**/.DS_Store
+
+# build
+/target/
+
+# secrets
+keys/
