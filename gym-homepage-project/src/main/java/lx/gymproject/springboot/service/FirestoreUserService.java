@@ -9,7 +9,7 @@ import com.google.cloud.firestore.QuerySnapshot;
 import lombok.RequiredArgsConstructor;
 import lx.gymproject.springboot.vo.GymUserVO;
 
-//@Service
+@Service
 @RequiredArgsConstructor
 public class FirestoreUserService {
 
