@@ -18,7 +18,9 @@ public class FirestoreUserService {
 //    public FirestoreUserService(Firestore firestore) {
 //        this.firestore = firestore;
 //    }
+  
     
+ // test
     public GymUserVO findByEmail(String email) throws Exception {
         QuerySnapshot snapshot = firestore
                 .collection("users")
