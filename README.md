@@ -14,30 +14,34 @@
 
 ### Frontend (REACT) 프로젝트 구조
 
+```
 src/
-├── assets/ # 이미지, 아이콘
-├── components/ # 공통 컴포넌트
-│ ├── Header.jsx
-│ ├── Footer.jsx
-│ ├── Button/
-│ └── Layout/
-├── pages/ # 페이지 단위 컴포넌트
-│ ├── Home.jsx
-│ ├── Login.jsx
-│ ├── Machine.jsx
-│ ├── Reservation.jsx
-│ ├── Board.jsx
-│ └── Location.jsx
-├── api/ # axios API 모듈
-├── router/ # React Router 설정
-├── styles/ # CSS
+├── assets/                # 이미지, 아이콘
+├── components/            # 공통 컴포넌트
+│   ├── Header.jsx
+│   ├── Footer.jsx
+│   ├── Button/
+│   └── Layout/
+├── pages/                 # 페이지 단위 컴포넌트
+│   ├── Home.jsx
+│   ├── Login.jsx
+│   ├── Machine.jsx
+│   ├── Reservation.jsx
+│   ├── Board.jsx
+│   └── Location.jsx
+├── api/                   # Axios API 모듈
+├── router/                # React Router 설정
+├── styles/                # CSS
 └── App.jsx
+```
 
 ### Backend (Spring Boot) 패키지 구조
 
-lx.gymproject.springboot/
-├── controller/ # 컨트롤러
-├── dao/ # 데이터 접근 객체
-├── vo/ # 값 객체
-├── interceptor/ # 인터셉터
-└── configuration/ # 설정 클래스
+```
+lx.gymproject.springboot
+├── controller/            # 컨트롤러
+├── dao/                   # 데이터 접근 객체 (MyBatis Mapper)
+├── vo/                    # VO / DTO
+├── interceptor/           # 인터셉터
+└── configuration/         # 설정 클래스
+```
