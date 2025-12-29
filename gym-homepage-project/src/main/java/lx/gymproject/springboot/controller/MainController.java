@@ -1,21 +1,34 @@
 package lx.gymproject.springboot.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-
-@Controller
+@RestController
+@CrossOrigin(origins = "http://localhost:5173")
 public class MainController {
-	
-	@GetMapping("/home.do")
+
+	@GetMapping("/api/home") // React용 API
 	public String home() {
-		return "home";
+		return "Gym Web Home"; // 단순 String
 	}
-	
-	//지도
-	@GetMapping("/location.do")
+
+	@GetMapping("/api/location") // React용 API
 	public String location() {
-		return "location";
+		return "Gym Location Info"; // 단순 String
 	}
-	
+
+//	
+//	@GetMapping("/home.do")
+//	public String home() {
+//		return "home";
+//	}
+//	
+//	//지도
+//	@GetMapping("/location.do")
+//	public String location() {
+//		return "location";
+//	}
+//	
 }

@@ -1,4 +1,3 @@
-import logo from "../../../assets/logo.jpg";
 import "./MachineList.css";
 import useMachine from "../../../hooks/useMachine";
 
