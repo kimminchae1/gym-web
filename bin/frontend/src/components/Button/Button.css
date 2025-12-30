@@ -1,0 +1,47 @@
+.custom-card-button {
+  padding: 30px;
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+  width: 360px;
+  height: 550px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.custom-card-button:hover {
+  background-color: #e9ecef;
+}
+
+.custom-card-button h3 {
+  color: #667eea;
+  margin-bottom: 15px;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.custom-card-button p {
+  color: #666666;
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+
+.custom-card-button img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+@media (max-width: 768px) {
+  .custom-card-button {
+    width: 280px;
+    height: 320px;
+  }
+  
+  .custom-card-button img {
+    height: 180px;
+  }
+}

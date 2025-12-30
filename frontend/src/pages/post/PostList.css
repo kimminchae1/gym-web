@@ -1,0 +1,240 @@
+/* 페이지 전체 */
+.postDetailPage {
+  min-height: 100vh;
+  background-color: #f8f9fa;
+}
+
+/* 컨테이너 (기존 container padding 느낌 반영) */
+.postContainer {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 150px 100px;
+}
+
+@media (max-width: 992px) {
+  .postContainer {
+    padding: 120px 24px;
+  }
+}
+
+/* 카드 */
+.postCard {
+  margin-top: 100px;
+  padding: 2rem;
+  background: #ffffff;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+
+/* 제목/메타 */
+.postTitle {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.postMeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 18px;
+  color: #6c757d;
+  margin-bottom: 1.25rem;
+}
+
+.metaItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.metaStrong {
+  font-weight: 700;
+  color: #495057;
+}
+
+.badgeLike {
+  display: inline-block;
+  padding: 0.35rem 0.6rem;
+  border-radius: 999px;
+  background: #6c757d;
+  color: #fff;
+  font-size: 0.85rem;
+}
+
+/* 구분선 */
+.divider {
+  margin: 1.25rem 0;
+  opacity: 0.2;
+}
+
+/* 이미지 */
+.postImageWrap {
+  text-align: center;
+  margin: 1.5rem 0;
+}
+
+.postImage {
+  max-height: 400px;
+  width: 100%;
+  object-fit: contain;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.25rem 0.6rem rgba(0,0,0,0.08);
+}
+
+/* 본문 */
+.postContent {
+  white-space: pre-wrap; /* 줄바꿈 유지 */
+  line-height: 1.75;
+  font-size: 1.1rem;
+  color: #212529;
+}
+
+/* 하단(좋아요/수정) */
+.postFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-top: 1.25rem;
+}
+
+.postStats {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  color: #6c757d;
+}
+
+.statBtn {
+  text-decoration: none;
+  color: inherit;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.statBtn:hover {
+  color: #0d6efd;
+}
+
+.statView {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.statNum {
+  font-size: 1.05rem;
+}
+
+/* 버튼 스타일(부트스트랩 비슷하게) */
+.btnPrimary {
+  border: none;
+  background: #0d6efd;
+  color: #fff;
+  padding: 0.55rem 0.9rem;
+  border-radius: 0.4rem;
+  cursor: pointer;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btnPrimary:hover {
+  filter: brightness(0.95);
+}
+
+.btnDangerOutline {
+  border: 1px solid #dc3545;
+  background: transparent;
+  color: #dc3545;
+  padding: 0.3rem 0.55rem;
+  border-radius: 0.35rem;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.btnDangerOutline:hover {
+  background: #dc3545;
+  color: #fff;
+}
+
+/* 댓글 */
+.commentSection {
+  margin-top: 2.5rem;
+}
+
+.commentTitle {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+
+.commentList {
+  margin-bottom: 1rem;
+}
+
+.commentEmpty {
+  color: #6c757d;
+}
+
+/* 댓글 아이템 */
+.commentItem {
+  border: 1px solid rgba(0,0,0,0.12);
+  border-radius: 0.5rem;
+  padding: 0.9rem;
+  margin-bottom: 0.7rem;
+  background: #fff;
+  word-break: break-word;
+}
+
+.commentHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.commentWho {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.commentAuthor {
+  font-weight: 700;
+  color: #212529;
+}
+
+.commentTime {
+  color: #6c757d;
+  font-size: 0.85rem;
+}
+
+.commentBody {
+  margin: 0.6rem 0 0;
+  color: #212529;
+}
+
+/* 댓글 작성 */
+.commentWrite {
+  display: flex;
+  gap: 10px;
+  align-items: stretch;
+}
+
+.commentTextarea {
+  flex: 1;
+  min-height: 70px;
+  resize: vertical;
+  padding: 0.7rem;
+  border-radius: 0.45rem;
+  border: 1px solid rgba(0,0,0,0.18);
+  outline: none;
+}
+
+.commentTextarea:focus {
+  border-color: rgba(13, 110, 253, 0.55);
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.12);
+}

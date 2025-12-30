@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+<head>
+<link rel="stylesheet" href="/css/header.css">
+<link rel="stylesheet" href="/css/footer.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>헬스장 위치 - 짐 케어 헬스&PT</title>
+
+<!-- 카카오 지도 API -->
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=37435eb6432fa1bd6c1a0b71b9f14277"></script>
+</head>
+<body>
+<div th:insert="~{header :: header}"></div>
+
+<div class="wrapper">
+    <div class="page-header">
+        <h1>헬스장 위치</h1>
+        <p>일산 탄현점 찾아오시는 길</p>
+    </div>
+
+    <div class="container">
+        <!-- 지도 표시 영역 -->
+        <div id="map" style="width:100%; height:400px; margin-bottom: 30px; border-radius: 10px; overflow: hidden;"></div>
+        
+        <!-- 헬스장 정보 -->
+        <div class="gym-info">
+            <h3>🏋️‍♂️ 짐 케어 헬스&PT 일산 탄현점</h3>
+            <div class="info-grid">
+                <div class="info-item">
+                    <strong>📍 주소</strong>
+                    <p>경기도 고양시 일산서구 탄현동 123-45</p>
+                </div>
+                <div class="info-item">
+                    <strong>📞 전화</strong>
+                    <p>031-1234-5678</p>
+                </div>
+                <div class="info-item">
+                    <strong>🕐 운영시간</strong>
+                    <p>평일: 06:00-23:00<br>주말: 08:00-22:00</p>
+                </div>
+                <div class="info-item">
+                    <strong>🚇 대중교통</strong>
+                    <p>지하철 3호선 탄현역 2번 출구<br>도보 5분</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 간단한 오시는길 안내 -->
+        <div class="directions">
+            <h4>🚗 자가용 이용시</h4>
+            <ul>
+                <li>자유로 → 일산IC → 중앙로 → 탄현동</li>
+                <li>주차장: 건물 지하 1-2층 (2시간 무료)</li>
+            </ul>
+            
+            <h4>🚌 대중교통 이용시</h4>
+            <ul>
+                <li>지하철 3호선 탄현역 하차 → 2번 출구 → 도보 5분</li>
+                <li>버스: 1000번, 1200번, 1300번 → 탄현동 정류장 하차</li>
+            </ul>
+        </div>
+
+        <!-- 버튼들 -->
+        <div class="action-buttons">
+            <button onclick="openKakaoMap()" class="btn btn-primary">카카오맵에서 보기</button>
+            <button onclick="copyAddress()" class="btn btn-secondary">주소 복사</button>
+            <form action="home.do" method="get" style="display: inline;">
+                <button type="submit" class="btn btn-outline-primary">홈으로 돌아가기</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div th:insert="~{footer :: footer}"></div>
+
+<script>
+// 카카오맵 초기화
+var mapContainer = document.getElementById('map');
+var mapOption = {
+    center: new kakao.maps.LatLng(37.693310, 126.763663), // 일산 탄현동 예시 좌표
+    level: 3 // 지도의 확대 레벨
+};
+
+// 지도 생성
+var map = new kakao.maps.Map(mapContainer, mapOption);
+
+// 마커 표시할 위치
+var markerPosition = new kakao.maps.LatLng(37.693310, 126.763663);
+
+// 마커 생성
+var marker = new kakao.maps.Marker({
+    position: markerPosition
+});
+
+// 마커를 지도 위에 표시
+marker.setMap(map);
+
+// 인포윈도우 생성
+var iwContent = '<div style="padding:5px; font-size:12px; width:200px;">' +
+                '<strong>🏋️‍♂️ 짐 케어 헬스&PT</strong><br>' +
+                '일산 탄현점<br>' +
+                '📞 031-1234-5678<br>' +
+                '🕐 06:00-23:00' +
+                '</div>';
+
+var infowindow = new kakao.maps.InfoWindow({
+    content: iwContent
+});
+
+// 마커에 인포윈도우 표시
+infowindow.open(map, marker);
+
+// 마커 클릭 이벤트
+kakao.maps.event.addListener(marker, 'click', function() {
+    infowindow.open(map, marker);
+});
+
+// 카카오맵 앱에서 열기
+function openKakaoMap() {
+    var url = 'https://map.kakao.com/link/search/짐케어 일산 탄현점';
+    window.open(url, '_blank');
+}
+
+// 주소 복사
+function copyAddress() {
+    var address = '경기도 고양시 일산서구 탄현동 123-45';
+    
+    // 클립보드 API 사용
+    if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(address).then(function() {
+            alert('주소가 클립보드에 복사되었습니다!\n' + address);
+        });
+    } else {
+        // 구형 브라우저 대응
+        var textArea = document.createElement("textarea");
+        textArea.value = address;
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+        alert('주소가 클립보드에 복사되었습니다!\n' + address);
+    }
+}
+
+// 지도 크기 재조정 (반응형)
+window.addEventListener('resize', function() {
+    map.relayout();
+});
+</script>
+
+<style>
+.wrapper {
+    min-height: 100vh;
+    padding-top: 150px;
+    padding-bottom: 100px;
+    background-color: #f8f9fa;
+}
+
+.page-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.page-header h1 {
+    color: #333;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.page-header p {
+    color: #666;
+    font-size: 1.2rem;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* 헬스장 정보 카드 */
+.gym-info {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    margin-bottom: 30px;
+}
+
+.gym-info h3 {
+    color: #333;
+    margin-bottom: 25px;
+    font-size: 1.8rem;
+    text-align: center;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 15px;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.info-item {
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    border-left: 4px solid #007bff;
+}
+
+.info-item strong {
+    display: block;
+    color: #333;
+    font-size: 1rem;
+    margin-bottom: 8px;
+}
+
+.info-item p {
+    margin: 0;
+    color: #555;
+    line-height: 1.5;
+    font-size: 0.95rem;
+}
+
+/* 오시는길 안내 */
+.directions {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    margin-bottom: 30px;
+}
+
+.directions h4 {
+    color: #333;
+    margin-bottom: 15px;
+    margin-top: 20px;
+    font-size: 1.2rem;
+}
+
+.directions h4:first-child {
+    margin-top: 0;
+}
+
+.directions ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.directions li {
+    padding: 8px 0;
+    padding-left: 20px;
+    position: relative;
+    color: #555;
+    line-height: 1.5;
+}
+
+.directions li:before {
+    content: "•";
+    color: #007bff;
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+/* 버튼들 */
+.action-buttons {
+    text-align: center;
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+    min-width: 160px;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,123,255,0.3);
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #545b62;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(108,117,125,0.3);
+}
+
+.btn-outline-primary {
+    background-color: transparent;
+    color: #007bff;
+    border: 2px solid #007bff;
+}
+
+.btn-outline-primary:hover {
+    background-color: #007bff;
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* 지도 그림자 효과 */
+#map {
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+/* 모바일 반응형 */
+@media (max-width: 768px) {
+    .wrapper {
+        padding-top: 120px;
+    }
+    
+    #map {
+        height: 300px !important;
+    }
+    
+    .page-header h1 {
+        font-size: 2rem;
+    }
+    
+    .gym-info, .directions {
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+    
+    .info-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .action-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .btn {
+        width: 250px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 15px;
+    }
+    
+    .page-header h1 {
+        font-size: 1.8rem;
+    }
+    
+    .gym-info h3 {
+        font-size: 1.5rem;
+    }
+    
+    .directions h4 {
+        font-size: 1.1rem;
+    }
+}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
