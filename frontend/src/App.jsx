@@ -6,7 +6,6 @@ import Mypage from "./pages/auth/Mypage";
 import Home from "./pages/home/Home";
 import Location from "./pages/introduce/Location";
 import Machine from "./pages/machine/Machine";
-import MachineEdit from "./pages/machine/MachineEdit";
 import PostBoard from "./pages/post/PostBoard";
 import PostEdit from "./pages/post/PostEdit";
 import PostList from "./pages/post/PostList";
@@ -29,7 +28,6 @@ function App() {
         <Route path="/mypage" element={<Mypage />} />
         <Route path="/location" element={<Location />} />
         <Route path="/machine" element={<Machine />} />
-        <Route path="/machine/edit" element={<MachineEdit />} />
         <Route path="/post/board" element={<PostBoard />} />
         <Route path="/post/edit" element={<PostEdit />} />
         <Route path="/post/list" element={<PostList />} />
