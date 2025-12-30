@@ -1,7 +1,7 @@
 import "./MachineList.css";
 import useMachine from "../../../hooks/useMachine";
 
-const MachineList = () => {
+const MachineList = ({ isAdmin, onClickMachine }) => {
   const { machines, loading } = useMachine();
 
   if (loading) return <div>로딩중...!</div>;
@@ -9,7 +9,15 @@ const MachineList = () => {
   return (
     <div className="machine_list">
       {machines.map((m) => (
-        <div className="machine_card" key={m.machineId}>
+        <div
+          className={`machine_card ${isAdmin ? "admin" : ""}`}
+          key={m.machineId}
+          onClick={() => {
+            if (isAdmin) {
+              onClickMachine(m);
+            }
+          }}
+        >
           <div className="machine_img">
             <img src={`/uploads/${m.machineImg}`} alt={m.machineName} />
           </div>

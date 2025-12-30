@@ -1,0 +1,97 @@
+.machine_form {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 10px;
+
+  background-color: #ffffff;
+  border-radius: 10px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* 제목 */
+.form_header {
+  text-align: center;
+  padding-bottom: 10px;
+}
+.form_header h2 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+  color: #222;
+}
+
+/* 공통 section */
+.machine_form section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* 제목 */
+.machine_form h3 {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+}
+
+/* input 공통 */
+.machine_form input[type="text"],
+.machine_form input[type="date"],
+.machine_form input[type="number"],
+.machine_form input[type="file"] {
+  padding: 10px 12px;
+  font-size: 14px;
+
+  border: 1px solid #ddd;
+  border-radius: 6px;
+
+  outline: none;
+}
+
+/* 버튼 영역 */
+.button_section {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+/* 등록 화면 전용 */
+.button_section.form {
+  justify-content: center;
+}
+.button_section.form button {
+  min-width: 100px;
+  padding: 10px 16px;
+
+  border: 1px solid #ccc;
+  border-radius: 6px;
+
+  background-color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* 수정 화면 전용 */
+.button_section.edit {
+  justify-content: center;
+}
+.button_section.edit button {
+  min-width: 100px;
+  padding: 10px 16px;
+
+  border: 1px solid #ccc;
+  border-radius: 6px;
+
+  background-color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+}
+/* 삭제 버튼 강조 */
+.button_section.edit .danger {
+  border-color: #e74c3c;
+  color: #e74c3c;
+}

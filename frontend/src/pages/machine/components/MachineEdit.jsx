@@ -1,13 +1,13 @@
 import "./MachineModal.css";
 import TextButton from "../../../components/Button/TextButton";
 import { useState } from "react";
-import { insertMachine } from "../../../features/machine.api";
+import { updateMachine } from "../../../features/machine.api";
 
-const MachineForm = ({ onClose }) => {
+const MachineEdit = ({ machine, onClose }) => {
   const [input, setInput] = useState({
-    machineName: "",
-    machinePurchaseDate: "",
-    machinePrice: "",
+    machineName: machine.machineName,
+    machinePurchaseDate: machine.machinePurchaseDate,
+    machinePrice: machine.machinePrice,
     file: null,
   });
 
@@ -24,7 +24,6 @@ const MachineForm = ({ onClose }) => {
     e.preventDefault();
 
     if (
-      !input.file ||
       !input.machineName ||
       !input.machinePurchaseDate ||
       !input.machinePrice
@@ -34,24 +33,29 @@ const MachineForm = ({ onClose }) => {
 
     const formData = new FormData();
 
-    formData.append("file", input.file);
+    formData.append("machineId", machine.machineId);
+    if (input.file) {
+      formData.append("file", input.file);
+    }
     formData.append("machineName", input.machineName);
     formData.append("machinePurchaseDate", input.machinePurchaseDate);
     formData.append("machinePrice", input.machinePrice);
 
     try {
-      await insertMachine(formData);
+      await updateMachine(formData);
       onClose();
       window.location.reload();
     } catch (err) {
       console.error("등록 실패", err);
     }
+
+    onClose();
   };
 
   return (
     <form className="machine_form" onSubmit={onSubmit}>
       <div className="form_header">
-        <h2>기구 등록</h2>
+        <h2>기구 수정</h2>
       </div>
 
       <section className="img_section">
@@ -90,11 +94,12 @@ const MachineForm = ({ onClose }) => {
         />
       </section>
 
-      <section className="button_section form">
-        <TextButton text="저장" type="submit" />
+      <section className="button_section edit">
+        <TextButton text="수정" type="submit" />
+        <TextButton text="삭제" type="button" className="danger" />
       </section>
     </form>
   );
 };
 
-export default MachineForm;
+export default MachineEdit;
