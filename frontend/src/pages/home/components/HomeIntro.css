@@ -1,0 +1,54 @@
+.home-intro {
+  text-align: center;
+  padding: 20px ;
+  border-radius: 25px;
+
+  position: relative;
+  overflow: hidden;
+}
+
+
+.home-context {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.home-context h1 {
+  font-size: 3.2rem;
+  margin-bottom: 24px;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.home-context p {
+  font-size: 1.4rem;
+  margin-bottom: 48px;
+  opacity: 0.95;
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+.home-intro img {
+  width: 100%;
+  max-width: 650px;
+  height: auto;
+  border-radius: 20px;
+  transition: transform 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .home-intro {
+    padding: 60px 20px;
+    margin: 20px 0;
+  }
+  
+  .home-context h1 {
+    font-size: 2.2rem;
+  }
+  
+  .home-context p {
+    font-size: 1.2rem;
+  }
+}

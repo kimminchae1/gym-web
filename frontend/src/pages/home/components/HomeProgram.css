@@ -1,0 +1,43 @@
+/* src/pages/home/components/HomeProgram.css */
+.home-program {
+  padding: 20px 0;
+  background: #fff;
+}
+
+.home-program h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 2.8rem;
+  color: #333;
+  font-weight: 700;
+  position: relative;
+}
+
+.home-row {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* 강제 가로 3개 보장 */
+@media (min-width: 992px) {
+  .home-row .row {
+    display: flex !important;
+  }
+  
+  .home-row .col-lg-4 {
+    flex: 0 0 33.333333% !important;
+    max-width: 33.333333% !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .home-program {
+    padding: 60px 20px;
+  }
+  
+  .home-program h2 {
+    font-size: 2.2rem;
+    margin-bottom: 40px;
+  }
+}
