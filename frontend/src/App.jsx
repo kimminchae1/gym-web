@@ -10,8 +10,8 @@ import PostBoard from "./pages/post/PostBoard";
 import PostEdit from "./pages/post/PostEdit";
 import PostList from "./pages/post/PostList";
 import PostWrite from "./pages/post/PostWrite";
-import AppointmentHome from "./pages/reservation/AppointmentHome";
-import Dashboard from "./pages/reservation/Dashboard";
+// import AppointmentHome from "./pages/reservation/AppointmentHome";
+// import Dashboard from "./pages/reservation/Dashboard";
 import Reservation from "./pages/reservation/Reservation";
 
 import Header from "./components/Header/Header";
@@ -32,8 +32,8 @@ function App() {
         <Route path="/post/edit" element={<PostEdit />} />
         <Route path="/post/list" element={<PostList />} />
         <Route path="/post/write" element={<PostWrite />} />
-        <Route path="/appointment/home" element={<AppointmentHome />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+        {/* <Route path="/appointment/home" element={<AppointmentHome />} /> */}
+        {/* <Route path="/dashboard" element={<Dashboard />} /> */}
         <Route path="/reservation" element={<Reservation />} />
       </Routes>
       <Footer />
