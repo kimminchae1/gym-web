@@ -1,0 +1,26 @@
+.animated-title {
+  font-size: 16px;
+  font-weight: 400;
+  height: 30px;
+  white-space: nowrap;
+  overflow: hidden;
+  flex-grow: 1;
+  margin: 0 2rem;
+}
+
+.track {
+  display: inline-block;
+  white-space: nowrap;
+  animation: marquee 25s linear infinite;
+}
+
+@keyframes marquee {
+  from { transform: translateX(100%); }
+  to { transform: translateX(-100%); }
+}
+
+@media (max-width: 768px) {
+  .animated-title {
+    display: none;
+  }
+}

@@ -1,0 +1,68 @@
+/* src/pages/reservation/Reservation.css */
+.reservation-container {
+  background: #f8f9fa;
+  min-height: 100vh;
+}
+
+.navbar2 {
+  background: linear-gradient(90deg, #4b6cb7, #182848);
+  color: white;
+  padding: 1rem 0;
+  margin-top: 80px;
+}
+
+.navbar-brand {
+  color: white !important;
+  font-weight: bold;
+  font-size: 1.5rem;
+  text-decoration: none;
+}
+
+.nav-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.btn {
+  background-color: white;
+  color: #05b666 !important;
+  font-weight: 600;
+  width: 90px;
+  text-align: center;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  border: none;
+  transition: background-color 0.3s;
+}
+
+.btn:hover {
+  background-color: #f0f0f0;
+}
+
+.wrapper {
+  margin-top: 50px;
+  padding: 40px 0;
+}
+
+.main-title {
+  text-align: center;
+  padding: 3rem 0;
+  font-weight: bold;
+  color: #28a745;
+  font-size: 2.5rem;
+}
+
+.content-row {
+  margin-left: 1rem;
+}
+
+@media (max-width: 768px) {
+  .navbar2 {
+    margin-top: 55px !important;
+  }
+  
+  .main-title {
+    font-size: 2rem;
+  }
+}

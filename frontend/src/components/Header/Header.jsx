@@ -18,7 +18,7 @@ const Header = () => {
       <nav className="header_menu">
         <NavLink to="/machine">운동기구 소개</NavLink>
         <NavLink to="/reservation">개인 PT 신청</NavLink>
-        <NavLink to="/post/board">게시판</NavLink>
+        <NavLink to="/post/list">게시판</NavLink>
         <NavLink to="/location">위치</NavLink>
       </nav>
 

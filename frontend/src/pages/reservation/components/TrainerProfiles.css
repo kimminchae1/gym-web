@@ -1,0 +1,36 @@
+.trainer-profiles {
+  padding-left: 1rem;
+}
+
+.trainer-section {
+  margin-top: 2rem;
+  margin-bottom: 3rem;
+}
+
+.trainer-section h4 {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  color: #333;
+  border-bottom: 3px solid #28a745;
+  padding-bottom: 8px;
+  display: inline-block;
+}
+
+.trainer-image {
+  width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.trainer-image:hover {
+  transform: scale(1.02);
+}
+
+@media (max-width: 768px) {
+  .trainer-profiles {
+    padding-left: 0;
+  }
+}
